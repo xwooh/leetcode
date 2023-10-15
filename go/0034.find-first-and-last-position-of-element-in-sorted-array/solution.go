@@ -6,7 +6,6 @@ package main
 
 import (
 	"bufio"
-	"encoding/asn1"
 	"fmt"
 	"os"
 
