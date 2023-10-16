@@ -18,8 +18,6 @@ func DivDepth(root *TreeNode) int {
 	// 单个节点的情况
 	if root == nil {
 		return 0
-	} else if root.Left == nil && root.Right == nil {
-		return 1
 	}
 
 	// 左右节点的各自情况
