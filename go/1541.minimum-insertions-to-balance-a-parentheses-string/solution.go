@@ -15,66 +15,28 @@ import (
 // @lc code=begin
 
 func minInsertions(s string) (ans int) {
-	stack := []string{}
+
+	var rn int
 
 	for _, c := range s {
 		if string(c) == "(" {
-			stack = append(stack, "(")
+			if rn%2 == 1 {
+				ans++ // 插入一个 )
+				rn--  // 上面插入了 )，那就对 ) 需求 -1
+			}
+			rn += 2
 		} else if string(c) == ")" {
-			if len(stack) >= 2 && stack[len(stack)-1] == ")" && stack[len(stack)-2] == "(" {
-				// 用当前的 ) 和栈最后的 ) 抵消栈倒数第二个 (
-				stack = stack[:len(stack)-2]
-				// 并且因为是右括号，插一个空格，防止和前面混在一起
-				stack = append(stack, "-")
-			} else {
-				// 抵消不了就入栈
-				stack = append(stack, ")")
+			rn -= 1
+
+			if rn == -1 {
+				// 多出来了一个 )
+				ans++  // 需要插入一个 (
+				rn = 1 // ) 的需求变为 1
 			}
 		}
-		fmt.Printf("stack: %v\n", stack)
 	}
 
-	nr := false
-	l, r := 0, len(stack)-1
-	for l <= r {
-		if l == r {
-			if stack[l] == "(" || stack[r] == ")" {
-				ans += 2
-			}
-			break
-		}
-		if stack[l] == ")" {
-			if stack[r] == ")" {
-				ans += 1
-				l++
-				r--
-			} else if stack[r] == "(" {
-				ans += 2
-				r--
-			} else if stack[r] == "-" {
-				r--
-			}
-		} else if stack[l] == "(" {
-			if stack[r] == ")" {
-				if nr {
-					r--
-					nr = false
-				} else {
-					l++
-					r--
-					nr = true
-					ans += 1
-				}
-			} else if stack[r] == "(" {
-				ans += 2
-				r--
-			} else if stack[r] == "-" {
-				r--
-			}
-		} else if stack[l] == "-" {
-			l++
-		}
-	}
+	ans += rn
 
 	return
 }
