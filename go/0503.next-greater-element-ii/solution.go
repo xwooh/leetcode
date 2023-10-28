@@ -46,17 +46,14 @@ func nextGreaterElements(nums []int) (ans []int) {
 	}
 
 	// 看看还有哪些索引位置还没找到下一个较大元素
-	newStack := []int{}
 	// 再用原数组过一遍单调栈
 	for _, v := range nums {
 		for len(stack) > 0 && (v > nums[stack[len(stack)-1]] || nums[stack[len(stack)-1]] == mxN) {
 			if v > nums[stack[len(stack)-1]] {
 				ans[stack[len(stack)-1]] = v
-				newStack = append(newStack, v)
 				stack = stack[:len(stack)-1]
 			} else if nums[stack[len(stack)-1]] == mxN {
 				ans[stack[len(stack)-1]] = -1
-				newStack = append(newStack, -1)
 				stack = stack[:len(stack)-1]
 			}
 		}
