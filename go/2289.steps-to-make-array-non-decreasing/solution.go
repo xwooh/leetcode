@@ -20,27 +20,29 @@ func max(i, j int) int {
 	return j
 }
 
-func totalSteps(nums []int) (ans int) {
-	stack := []int{}
+type E struct {
+	V    int
+	Step int
+}
 
-	var M int
-	for _, v := range nums {
-		M = max(M, v)
-	}
+func totalSteps(nums []int) (ans int) {
+	stack := []E{}
 
 	var c int
-	var poped bool
 	for i := len(nums) - 1; i >= 0; i-- {
-		for (len(stack) > 0 && nums[i] > stack[len(stack)-1]) || (poped && len(stack) == 1 && nums[i] == stack[len(stack)-1] && nums[i] < M) {
-			stack = stack[:len(stack)-1]
-			c++
-			ans = max(ans, c)
-			poped = true
-		}
-		poped = false
-		// 清零，重新计算
 		c = 0
-		stack = append(stack, nums[i])
+		for len(stack) > 0 && nums[i] > stack[len(stack)-1].V {
+			top := stack[len(stack)-1]
+			c += top.Step
+			ans = max(ans, c)
+			stack = stack[:len(stack)-1]
+		}
+		// 清零，重新计算
+		if len(stack) == 0 {
+			stack = append(stack, E{nums[i], 1})
+		} else {
+			stack = append(stack, E{nums[i], max(c, 1)})
+		}
 	}
 
 	return
