@@ -13,7 +13,18 @@ import (
 )
 
 // @lc code=begin
-func max(nums []int) (ans int) {
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func max3(a, b, c int) int {
+	return max(max(a, b), c)
+}
+
+func maxEinArr(nums []int) (ans int) {
 	ans = nums[0]
 	for _, v := range nums[1:] {
 		if v > ans {
@@ -23,9 +34,8 @@ func max(nums []int) (ans int) {
 	return
 }
 
-func maxSubArray(nums []int) (ans int) {
+func dpR(nums []int) (ans int) {
 	// dp[i] 表示 nums[i] 为结尾的最大连续数组和
-
 	dp := make([]int, len(nums))
 	for i := 0; i < len(nums); i++ {
 		if i == 0 {
@@ -38,8 +48,23 @@ func maxSubArray(nums []int) (ans int) {
 			}
 		}
 	}
+	ans = maxEinArr(dp)
+	return
+}
 
-	ans = max(dp)
+func maxSubArray(nums []int) (ans int) {
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	// 连续子数组和
+	cs := nums[0]
+	ans = cs
+	for i := 1; i < len(nums); i++ {
+		cs = max(cs+nums[i], nums[i])
+		// 取其中最大的连续子数组和
+		ans = max(cs, ans)
+	}
 
 	return
 }
