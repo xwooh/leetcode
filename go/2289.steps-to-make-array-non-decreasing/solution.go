@@ -28,20 +28,12 @@ type E struct {
 func totalSteps(nums []int) (ans int) {
 	stack := []E{}
 
-	var c int
-	for i := len(nums) - 1; i >= 0; i-- {
-		c = 0
-		for len(stack) > 0 && nums[i] > stack[len(stack)-1].V {
+	for _, v := range nums {
+		e := E{v, 1}
+		for len(stack) > 0 && e.V > stack[len(stack)-1].V {
 			top := stack[len(stack)-1]
-			c += top.Step
-			ans = max(ans, c)
 			stack = stack[:len(stack)-1]
-		}
-		// 清零，重新计算
-		if len(stack) == 0 {
-			stack = append(stack, E{nums[i], 1})
-		} else {
-			stack = append(stack, E{nums[i], max(c, 1)})
+			e.Step += 1
 		}
 	}
 
