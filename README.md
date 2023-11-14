@@ -4,6 +4,10 @@
 
 - (Easy) [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/)
 
+### 双指针
+
+- (Easy) [11. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
+
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
 
