@@ -35,8 +35,25 @@ func quick(nums []int) {
 	}
 
 	pIdx := partition(nums, 0, len(nums)-1)
+	// fmt.Printf("%v, %d(%d), %v\n", nums[:pIdx], nums[pIdx], pIdx, nums[pIdx+1:])
 	quick(nums[:pIdx])
 	quick(nums[pIdx+1:])
 
 	return
+}
+
+func topK(nums []int, k int, ans *[]int) {
+	p := partition(nums, 0, len(nums)-1)
+
+	if p+1 == k {
+		*ans = append(*ans, nums[:p+1]...)
+		return
+	} else if p+1 > k {
+		topK(nums[:p], k, ans)
+		return
+	} else {
+		*ans = append(*ans, nums[:p+1]...)
+		topK(nums[p+1:], k-(p+1), ans)
+		return
+	}
 }
