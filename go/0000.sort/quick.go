@@ -51,7 +51,7 @@ func topK(nums []int, k int, ans *[]int) {
 	} else if p+1 > k {
 		topK(nums[:p], k, ans)
 		return
-	} else {
+	} else if p+1 < k {
 		*ans = append(*ans, nums[:p+1]...)
 		topK(nums[p+1:], k-(p+1), ans)
 		return
