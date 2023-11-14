@@ -8,6 +8,10 @@
 
 - (Easy) [11. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
 
+### 快排
+
+- (Medium) [347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
+
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
 
