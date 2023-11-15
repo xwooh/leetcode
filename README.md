@@ -11,6 +11,7 @@
 ### 快排
 
 - (Medium) [347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
+- (Easy) [15. 三数之和](https://leetcode.cn/problems/3sum/)
 
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
