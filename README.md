@@ -11,6 +11,7 @@
 ### 链表
 
 - (Easy) [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+- (Easy) [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
 - (Easy) [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
 
 ### 快排
