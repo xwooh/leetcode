@@ -8,6 +8,10 @@
 
 - (Easy) [11. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
 
+### 链表
+
+- (Easy) [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+
 ### 快排
 
 - (Medium) [347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
