@@ -46,8 +46,28 @@ func sortByTwoListNode(head *ListNode, x int) (ans *ListNode) {
 }
 
 // @lc code=begin
+func partitionByInser(head *ListNode, x int) (ans *ListNode) {
+	dummy := &ListNode{Val: 0, Next: head}
+	slow := dummy
+	fast := dummy
+
+	for fast.Next != nil {
+		if fast.Next.Val < x {
+			// fast.Next 节点插入到 slow 后面
+			tmp := fast.Next
+			fast.Next = fast.Next.Next
+			tmp.Next = slow.Next
+			slow.Next = tmp
+		}
+		fast = fast.Next
+	}
+
+	ans = dummy.Next
+	return
+}
+
 func partition(head *ListNode, x int) (ans *ListNode) {
-	ans = sortByTwoListNode(head, x)
+	ans = partitionByInser(head, x)
 	return
 }
 
