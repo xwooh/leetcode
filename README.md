@@ -7,6 +7,7 @@
 ### 二分
 
 - (Medium) [215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
+- (Medium) [162. 寻找峰值](https://leetcode.cn/problems/find-peak-element/)
 
 ### 双指针
 
