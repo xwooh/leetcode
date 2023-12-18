@@ -7,6 +7,7 @@
 ### 二分
 
 - (Medium) [215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
+- (Medium) [153. 寻找旋转排序数组中的最小值](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/)
 - (Medium) [162. 寻找峰值](https://leetcode.cn/problems/find-peak-element/)
 - (Hard) [4. 寻找两个正序数组的中位数](https://leetcode.cn/problems/median-of-two-sorted-arrays/)
 

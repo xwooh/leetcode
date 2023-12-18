@@ -28,7 +28,7 @@ func bsll(nums []int, target int) int {
 
 	for l < r {
 		// NOTE: 往右边缩的时候没有 m+1，所以 m 要往右偏一点
-		m := l + (r-l)/2 + 1
+		m := l + (r-l+1)/2
 		if nums[m] >= target {
 			// 当前元素大，那就往左边找
 			r = m - 1
@@ -49,7 +49,7 @@ func bsr(nums []int, target int) int {
 	l, r := 0, len(nums)-1
 
 	for l < r {
-		m := l + (r-l)/2 + 1
+		m := l + (r-l+1)/2
 		if nums[m] == target {
 			// 找右边界，左移
 			l = m
