@@ -37,9 +37,9 @@ func getBorder(nums1, nums2 []int) (int, int) {
 }
 
 func countOnce(nums []int, x int) int {
-	// nums1, nums2 都是非递减数组
-	// nums1, nums2 中 <= x 的总和，即: 二分找 <= x 的右边界
-
+	// nums 是非递减数组
+	// 求出在 nums 中 <= x 数的个数
+	// 即: 在nums1, nums2 中找 <= x 的右界
 	if len(nums) == 0 {
 		return -1
 	}
@@ -66,7 +66,8 @@ func countOnce(nums []int, x int) int {
 
 func count(nums1, nums2 []int, x int) int {
 	// nums1, nums2 都是非递减数组
-	// nums1, nums2 中 <= x 的总和，即: 二分找 <= x 的右边界
+	// 求的是在 nums1, nums2 中 <= x 数的个数
+	// 即: 在nums1, nums2 中找 <= x 的右界
 
 	c1 := countOnce(nums1, x) + 1
 	c2 := countOnce(nums2, x) + 1
@@ -75,7 +76,8 @@ func count(nums1, nums2 []int, x int) int {
 }
 
 func findTopK(nums1 []int, nums2 []int, l, r, k int) int {
-	// count(nums1, nums2, x) <= k 的左边界
+	// nums1, nums2 中找一个数，其为前 k 小的数
+	// 这个数就是 count(nums1, nums2, x) <= k 的左边界
 	for l < r {
 		x := l + (r-l)/2
 		t := count(nums1, nums2, x)
