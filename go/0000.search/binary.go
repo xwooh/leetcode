@@ -6,12 +6,9 @@ func bsl(nums []int, target int) int {
 
 	for l < r {
 		m := l + (r-l)/2
-		if nums[m] == target {
+		if nums[m] >= target {
 			// 往左缩
 			r = m
-		} else if nums[m] > target {
-			// 往左缩
-			r = m - 1
 		} else if nums[m] < target {
 			// 往右缩
 			l = m + 1
