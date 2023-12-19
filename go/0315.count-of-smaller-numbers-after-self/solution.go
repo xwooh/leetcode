@@ -8,8 +8,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
-	"strings"
 
 	. "github.com/j178/leetgo/testutils/go"
 )
@@ -19,18 +17,6 @@ type Vc struct {
 	idx int
 	v   int
 	c   int
-}
-
-func toString(vcs []Vc) string {
-
-	var s []string
-
-	for _, v := range vcs {
-		s = append(s, strconv.Itoa(v.v))
-	}
-
-	x := strings.Join(s, ",")
-	return fmt.Sprintf("[%s]", x)
 }
 
 func mergeTwo(ns1 []Vc, ns2 []Vc) []Vc {
