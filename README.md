@@ -29,6 +29,10 @@
 - (Easy) [15. 三数之和](https://leetcode.cn/problems/3sum/)
 - (Medium) [215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
 
+### 归并
+
+- (Medium) [315. 计算右侧小于当前元素的个数](https://leetcode.cn/problems/count-of-smaller-numbers-after-self/)
+
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
 
