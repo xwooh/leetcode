@@ -16,16 +16,16 @@ import (
 // @lc code=begin
 type Interv [][]int
 
-func (intv *Interv) Len() int {
-	return len(*intv)
+func (intv Interv) Len() int {
+	return len(intv)
 }
 
-func (intv *Interv) Less(i, j int) bool {
-	return (*intv)[i][0] < (*intv)[j][0]
+func (intv Interv) Less(i, j int) bool {
+	return intv[i][0] < intv[j][0]
 }
 
-func (intv *Interv) Swap(i, j int) {
-	(*intv)[i], (*intv)[j] = (*intv)[j], (*intv)[i]
+func (intv Interv) Swap(i, j int) {
+	intv[i], intv[j] = intv[j], intv[i]
 }
 
 func max(a, b int) int {
@@ -36,7 +36,7 @@ func max(a, b int) int {
 }
 
 func merge(intervals [][]int) (ans [][]int) {
-	sort.Sort((*Interv)(&intervals))
+	sort.Sort(Interv(intervals))
 
 	for _, ns := range intervals {
 		if len(ans) == 0 || ns[0] > ans[len(ans)-1][1] {
