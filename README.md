@@ -37,6 +37,10 @@
 
 - (Medium) [114. 二叉树展开为链表](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/)
 
+### 单调栈
+
+- (Medium) [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
+
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
 
