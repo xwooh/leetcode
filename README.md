@@ -33,6 +33,10 @@
 
 - (Medium) [315. 计算右侧小于当前元素的个数](https://leetcode.cn/problems/count-of-smaller-numbers-after-self/)
 
+### 二叉树
+
+- (Medium) [114. 二叉树展开为链表](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/)
+
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
 
