@@ -14,6 +14,7 @@
 ### 双指针
 
 - (Easy) [11. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
+- (Easy) [148. 排序链表] (https://leetcode.cn/problems/sort-list/)
 
 ### 链表
 
