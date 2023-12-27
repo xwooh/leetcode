@@ -23,6 +23,7 @@
 
 - (Easy) [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
 - (Easy) [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
+- (Easy) [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
 - (Medium) [86. 分隔链表](https://leetcode.cn/problems/partition-list/)
 - (Medium) [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
 - (Medium) [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
