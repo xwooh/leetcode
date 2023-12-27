@@ -3,6 +3,7 @@
 ### 动态规划
 
 - (Easy) [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/)
+- (Easy) [198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
 
 ### 二分
 
