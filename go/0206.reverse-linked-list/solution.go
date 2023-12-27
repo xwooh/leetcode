@@ -12,7 +12,6 @@ import (
 	. "github.com/j178/leetgo/testutils/go"
 )
 
-// @lc code=begin
 func insertHead(head *ListNode) (ans *ListNode) {
 	// 头插法
 	// 挨个把节点挪到头部
@@ -34,8 +33,21 @@ func insertHead(head *ListNode) (ans *ListNode) {
 	return
 }
 
+// @lc code=begin
 func reverseList(head *ListNode) (ans *ListNode) {
-	ans = insertHead(head)
+	p := head
+	for p != nil && p.Next != nil {
+		ans = p.Next
+		p.Next = p.Next.Next
+
+		// 插到头部
+		ans.Next = head
+
+		// 新的头部
+		head = ans
+	}
+
+	ans = head
 	return
 }
 
