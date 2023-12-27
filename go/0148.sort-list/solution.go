@@ -12,6 +12,27 @@ import (
 	. "github.com/j178/leetgo/testutils/go"
 )
 
+func recursion(head *ListNode) (ans *ListNode) {
+	if head == nil {
+		return
+	} else if head.Next == nil {
+		ans = head
+		return
+	}
+
+	m := findMid(head)
+	l := head
+	r := m.Next
+	m.Next = nil
+
+	l = sortList(l)
+	r = sortList(r)
+
+	ans = merge(l, r)
+
+	return
+}
+
 // @lc code=begin
 func findMid(head *ListNode) *ListNode {
 	s, f := head, head.Next
@@ -56,22 +77,6 @@ func merge(ln, rn *ListNode) *ListNode {
 }
 
 func sortList(head *ListNode) (ans *ListNode) {
-	if head == nil {
-		return
-	} else if head.Next == nil {
-		ans = head
-		return
-	}
-
-	m := findMid(head)
-	l := head
-	r := m.Next
-	m.Next = nil
-
-	l = sortList(l)
-	r = sortList(r)
-
-	ans = merge(l, r)
 
 	return
 }
