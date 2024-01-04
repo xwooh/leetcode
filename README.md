@@ -4,6 +4,7 @@
 
 - (Easy) [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/)
 - (Easy) [198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
+- (Easy) [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 
 ### 二分
 
