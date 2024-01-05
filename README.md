@@ -2,9 +2,9 @@
 
 ### 动态规划
 
-- (Easy)   [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/)
-- (Easy)   [198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
-- (Easy)   [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
+- (Easy) [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/)
+- (Easy) [198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
+- (Easy) [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 - (Medium) [518. 零钱兑换 II](https://leetcode.cn/problems/coin-change-ii/)
 
 ### 二分
@@ -12,20 +12,20 @@
 - (Medium) [215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
 - (Medium) [153. 寻找旋转排序数组中的最小值](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/)
 - (Medium) [162. 寻找峰值](https://leetcode.cn/problems/find-peak-element/)
-- (Hard)   [4. 寻找两个正序数组的中位数](https://leetcode.cn/problems/median-of-two-sorted-arrays/)
+- (Hard) [4. 寻找两个正序数组的中位数](https://leetcode.cn/problems/median-of-two-sorted-arrays/)
 
 ### 双指针
 
-- (Easy)   [11. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
-- (Easy)   [148. 排序链表](https://leetcode.cn/problems/sort-list/)
-- (Easy)   [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
-- (Easy)   [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+- (Easy) [11. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/)
+- (Easy) [148. 排序链表](https://leetcode.cn/problems/sort-list/)
+- (Easy) [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+- (Easy) [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
 
 ### 链表
 
-- (Easy)   [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
-- (Easy)   [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
-- (Easy)   [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
+- (Easy) [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)
+- (Easy) [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
+- (Easy) [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/)
 - (Medium) [86. 分隔链表](https://leetcode.cn/problems/partition-list/)
 - (Medium) [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
 - (Medium) [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
@@ -33,7 +33,7 @@
 ### 快排
 
 - (Medium) [347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
-- (Easy)   [15. 三数之和](https://leetcode.cn/problems/3sum/)
+- (Easy) [15. 三数之和](https://leetcode.cn/problems/3sum/)
 - (Medium) [215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
 
 ### 归并
