@@ -46,6 +46,7 @@
 ### 单调栈
 
 - (Medium) [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
+- (Medium) [122. 买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/)
 
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
