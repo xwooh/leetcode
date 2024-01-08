@@ -39,6 +39,7 @@
 ### 归并
 
 - (Medium) [315. 计算右侧小于当前元素的个数](https://leetcode.cn/problems/count-of-smaller-numbers-after-self/)
+- (Easy) [692. 前K个高频单词](https://leetcode.cn/problems/top-k-frequent-words/)
 
 ### 二叉树
 
