@@ -18,15 +18,21 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 		return root
 	}
 
-	right := lowestCommonAncestor(root.Right, p, q)
-	left := lowestCommonAncestor(root.Left, p, q)
+	// 在右节点找公共祖先
+	r := lowestCommonAncestor(root.Right, p, q)
+	// 在左节点找公共祖先
+	l := lowestCommonAncestor(root.Left, p, q)
 
-	if right == nil {
-		// 右子树没找到，却在左子树找到了，那说明找到的就是最近公共祖先
-		return left
-	} else if left == nil {
-		return right
+	if r == nil {
+		// 右节点里面没找到公共祖先
+		//	那公共祖先就在左节点里面
+		return l
 	}
+
+	if l == nil {
+		return r
+	}
+
 	return root
 }
 
