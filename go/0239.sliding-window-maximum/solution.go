@@ -69,6 +69,8 @@ func maxSlidingWindow(nums []int, k int) (ans []int) {
 	for i := range nums[k:] {
 		idx := i + k
 
+		// 每次操作都维护一下这个单调队列，不要等最大值滑出窗口后再算新窗口内的最大值
+		//	把维护的时间复杂度均摊到每次操作，这样能降低最坏情况下的复杂度
 		// 确保队头元素在当前滑动窗口内
 		for len(wis) > 0 && wis[0] <= idx-k {
 			// pop 掉队头元素
