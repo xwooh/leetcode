@@ -6,6 +6,8 @@
 - (Easy) [198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
 - (Easy) [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 - (Medium) [518. 零钱兑换 II](https://leetcode.cn/problems/coin-change-ii/)
+- (Medium) [55. 跳跃游戏](https://leetcode.cn/problems/jump-game/)
+- (Medium) [45. 跳跃游戏 II](https://leetcode.cn/problems/jump-game-ii/)
 
 ### 二分
 
