@@ -62,6 +62,7 @@
 - (Medium) [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
 - (Medium) [122. 买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/)
 - (Medium) [402. 移掉 K 位数字](https://leetcode.cn/problems/remove-k-digits/)
+- (Medium) [962. 最大宽度坡](https://leetcode.cn/problems/maximum-width-ramp/)
 - (Hard) [239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/)
 
 
