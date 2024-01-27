@@ -30,22 +30,18 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	head := r
 
 	var step int
-	for l1 != nil && l2 != nil {
-		r = add(l1.Val+l2.Val+step, &step, r)
-		l1 = l1.Next
-		l2 = l2.Next
-	}
+	for l1 != nil || l2 != nil {
+		t := step
+		if l1 != nil {
+			t += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			t += l2.Val
+			l2 = l2.Next
+		}
 
-	// l2 已经每值了，l1 还有值
-	for l1 != nil {
-		r = add(l1.Val+step, &step, r)
-		l1 = l1.Next
-	}
-
-	// l1 已经每值了，l2 还有值
-	for l2 != nil {
-		r = add(l2.Val+step, &step, r)
-		l2 = l2.Next
+		r = add(t, &step, r)
 	}
 
 	// 最后还有进位
