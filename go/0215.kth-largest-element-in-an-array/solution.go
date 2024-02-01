@@ -7,6 +7,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 
 	. "github.com/j178/leetgo/testutils/go"
@@ -27,57 +28,53 @@ func max(a, b int) int {
 	return b
 }
 
+func count(nums []int, v int) (int, int) {
+	// returns:
+	//   - nums 中 >=v 的个数
+	//   - <=v 的最大值，因为要找的是 nums 中的值
+	c := 0
+	key := math.MaxInt
+	for _, n := range nums {
+		if n >= v {
+			c++
+			key = min(key, n)
+		}
+	}
+
+	return c, key
+}
+
 func findKthLargest(nums []int, k int) (ans int) {
 	// 最小最大值
-	s, b := nums[0], nums[0]
+	l, r := nums[0], nums[0]
 	for _, v := range nums[1:] {
-		s = min(s, v)
-		b = max(b, v)
+		l = min(l, v)
+		r = max(r, v)
 	}
 
-	// [s, b] 之间选一个数 x，使得所有的数 >= x (左边界)
-	for s < b {
-		x := s + (b-s)/2 + 1
+	for l <= r {
+		// 左边界就是变化的点，所以左边界必定在 nums 中
+		m := l + (r-l)/2
 
-		kc := 0
-		for _, v := range nums {
-			if v >= x {
-				if kc == 0 {
-					ans = v
-				} else {
-					ans = min(ans, v)
-				}
-				kc++
-			}
-		}
-		if kc == k {
-			return
-		} else if kc < k {
-			// 这个数大了，小一点 => 左移
-			b = x - 1
+		c, kv := count(nums, m)
+
+		if c == k {
+			// 求左边界，那就继续往左偏移
+			return kv
+		} else if c > k {
+			// >= m 的数多了，也就是 m 有点小需要变大，那就往右偏移
+			// 这里很神奇，如果 nums 中大值比较少，相同小值又很多，
+			//	那就会往右偏，但是一旦右偏，c 肯定 < k，
+			//		但巧就巧在 c < k 条件下，r 左移后的值就是想要的 ans
+			//		所以最后 return r
+			l = m + 1
 		} else {
-			// 这个数小了，大一点 => 右移
-			s = x
-		}
-
-	}
-
-	kc := 0
-	for _, v := range nums {
-		if v >= s {
-			if kc == 0 {
-				ans = v
-			} else {
-				ans = min(ans, v)
-			}
-			kc++
+			// >= m 的数少了，也就是 m 有点大需要变小，那就往左偏移
+			r = m - 1
 		}
 	}
-	if kc >= k {
-		return
-	}
 
-	return -1
+	return r
 }
 
 // @lc code=end

@@ -21,3 +21,9 @@ input:
 5
 output:
 3
+
+input:
+[-1,2,0]
+1
+output:
+2
