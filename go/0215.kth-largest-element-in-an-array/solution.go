@@ -7,6 +7,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 
 	. "github.com/j178/leetgo/testutils/go"
@@ -27,57 +28,57 @@ func max(a, b int) int {
 	return b
 }
 
-func findKthLargest(nums []int, k int) (ans int) {
-	// 最小最大值
-	s, b := nums[0], nums[0]
-	for _, v := range nums[1:] {
-		s = min(s, v)
-		b = max(b, v)
-	}
-
-	// [s, b] 之间选一个数 x，使得所有的数 >= x (左边界)
-	for s < b {
-		x := s + (b-s)/2 + 1
-
-		kc := 0
-		for _, v := range nums {
-			if v >= x {
-				if kc == 0 {
-					ans = v
-				} else {
-					ans = min(ans, v)
-				}
-				kc++
-			}
-		}
-		if kc == k {
-			return
-		} else if kc < k {
-			// 这个数大了，小一点 => 左移
-			b = x - 1
-		} else {
-			// 这个数小了，大一点 => 右移
-			s = x
-		}
-
-	}
-
-	kc := 0
+func count(nums []int, p int) (ans int, x int) {
+	x = math.MinInt
 	for _, v := range nums {
-		if v >= s {
-			if kc == 0 {
-				ans = v
-			} else {
-				ans = min(ans, v)
-			}
-			kc++
+		if v >= p {
+			ans++
+			x = max(x, v)
 		}
 	}
-	if kc >= k {
-		return
+	return
+}
+
+func findKthLargest(nums []int, k int) (ans int) {
+	// 值域二分
+
+	// 先拿到值域的范围
+	l := math.MaxInt
+	r := math.MinInt
+	for _, v := range nums {
+		l = min(l, v)
+		r = max(r, v)
 	}
 
-	return -1
+	// 在值域内二分，求左边界
+	//	x 取的是符合条件的右边界值
+	var x int
+	for l < r {
+		x = l + (r-l+1)/2
+		c, x := count(nums, x)
+		if c == k {
+			r = x
+		} else if c > k {
+			// val 太小了，导致 c 过大
+			l = x + 1
+		} else {
+			// val 太大了，导致 c 过小
+			r = x - 1
+		}
+	}
+
+	xc := 0
+	for _, v := range nums {
+		if x >= v {
+			xc++
+		}
+	}
+
+	if xc < k {
+		return -1
+	}
+
+	return x
 }
 
 // @lc code=end
