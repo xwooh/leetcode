@@ -12,64 +12,47 @@ import (
 	. "github.com/j178/leetgo/testutils/go"
 )
 
-func dp(nums []int, i int, table map[int]int) int {
-	// 以索引 i 元素结尾的，最长子序列长度 l
-
-	m := 1
-	for j := i - 1; j >= 0; j-- {
-		var dpn int
-		if v, ok := table[j]; ok {
-			dpn = v
-		} else {
-			dpn = dp(nums, j, table)
-		}
-		if nums[i] > nums[j] {
-			m = max(m, dpn+1)
-		}
-	}
-	table[i] = m
-	return m
-}
-
-func dpFunc(nums []int) (ans int) {
-	// dp 以 func 形式的解法
-	table := make(map[int]int)
-	for i := 0; i < len(nums); i++ {
-		ans = max(ans, dp(nums, i, table))
-	}
-	return
-}
-
 // @lc code=begin
-func max(a, b int) int {
-	if a > b {
-		return a
+func bsl(nums []int, t int) int {
+	l, r := 0, len(nums)
+
+	for l < r {
+		m := l + (r-l)/2
+		if nums[m] >= t {
+			// 找左边界
+			r = m
+		} else {
+			l = m + 1
+		}
 	}
-	return b
+
+	if nums[l] >= t {
+		return l
+	}
+
+	return -1
 }
 
 func lengthOfLIS(nums []int) (ans int) {
-	dp := make(map[int]int)
+	// 维护一个数组 p，p[i] 表示最长上升子序列长度为 i+1 的时候，所有符合这个长度序列中的最小结尾值。
+	// 比如 [2, 4, 3, 5] 长度为 2 的上升子序列有 [2, 3] [2, 4] [2, 5] [3, 5]，那对应 p[1] = min([3, 4, 5]) = 3
+	p := []int{}
 
-	for i := 0; i < len(nums); i++ {
-		if i == 0 {
-			dp[i] = 1
+	for _, v := range nums {
+		if len(p) == 0 {
+			p = append(p, v)
+		} else if v > p[len(p)-1] {
+			p = append(p, v)
 		} else {
-			maxi := 1
-			for j := i - 1; j >= 0; j-- {
-				if nums[i] > nums[j] {
-					maxi = max(maxi, dp[j]+1)
-				}
+			// 在 p 中寻找 >= v 的左边界（找到第一个不小于 v 的值），并替换掉
+			pIdx := bsl(p, v)
+			if pIdx != -1 {
+				p[pIdx] = v
 			}
-			dp[i] = maxi
 		}
-
-		ans = max(ans, dp[i])
 	}
 
-	fmt.Printf("dp: %v\n", dp)
-
-	return
+	return len(p)
 }
 
 // @lc code=end
