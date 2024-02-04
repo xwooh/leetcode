@@ -28,53 +28,57 @@ func max(a, b int) int {
 	return b
 }
 
-func count(nums []int, v int) (int, int) {
-	// returns:
-	//   - nums 中 >=v 的个数
-	//   - <=v 的最大值，因为要找的是 nums 中的值
-	c := 0
-	key := math.MaxInt
-	for _, n := range nums {
-		if n >= v {
-			c++
-			key = min(key, n)
+func count(nums []int, p int) (ans int, x int) {
+	x = math.MinInt
+	for _, v := range nums {
+		if v >= p {
+			ans++
+			x = max(x, v)
 		}
 	}
-
-	return c, key
+	return
 }
 
 func findKthLargest(nums []int, k int) (ans int) {
-	// 最小最大值
-	l, r := nums[0], nums[0]
-	for _, v := range nums[1:] {
+	// 值域二分
+
+	// 先拿到值域的范围
+	l := math.MaxInt
+	r := math.MinInt
+	for _, v := range nums {
 		l = min(l, v)
 		r = max(r, v)
 	}
 
-	for l <= r {
-		// 左边界就是变化的点，所以左边界必定在 nums 中
-		m := l + (r-l)/2
-
-		c, kv := count(nums, m)
-
+	// 在值域内二分，求左边界
+	//	x 取的是符合条件的右边界值
+	var x int
+	for l < r {
+		x = l + (r-l+1)/2
+		c, x := count(nums, x)
 		if c == k {
-			// 求左边界，那就继续往左偏移
-			return kv
+			r = x
 		} else if c > k {
-			// >= m 的数多了，也就是 m 有点小需要变大，那就往右偏移
-			// 这里很神奇，如果 nums 中大值比较少，相同小值又很多，
-			//	那就会往右偏，但是一旦右偏，c 肯定 < k，
-			//		但巧就巧在 c < k 条件下，r 左移后的值就是想要的 ans
-			//		所以最后 return r
-			l = m + 1
+			// val 太小了，导致 c 过大
+			l = x + 1
 		} else {
-			// >= m 的数少了，也就是 m 有点大需要变小，那就往左偏移
-			r = m - 1
+			// val 太大了，导致 c 过小
+			r = x - 1
 		}
 	}
 
-	return r
+	xc := 0
+	for _, v := range nums {
+		if x >= v {
+			xc++
+		}
+	}
+
+	if xc < k {
+		return -1
+	}
+
+	return x
 }
 
 // @lc code=end

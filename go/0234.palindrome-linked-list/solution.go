@@ -13,17 +13,26 @@ import (
 )
 
 // @lc code=begin
-func reverseNode(head *ListNode) *ListNode {
-	p := &ListNode{Next: head}
-
-	for head != nil && head.Next != nil {
-		tmp := head.Next
-		head.Next = head.Next.Next
-		tmp.Next = p.Next
-		p.Next = tmp
+func getRightHalfNode(head *ListNode) *ListNode {
+	s, f := head, head
+	for f.Next != nil && f.Next.Next != nil {
+		s = s.Next
+		f = f.Next.Next
 	}
 
-	return p.Next
+	r := s.Next
+
+	// 反转链表 r
+	dummy := &ListNode{Next: r}
+	p := r
+	for p.Next != nil {
+		tmp := p.Next
+		p.Next = p.Next.Next
+		tmp.Next = dummy.Next
+		dummy.Next = tmp
+	}
+
+	return dummy.Next
 }
 
 func isPalindrome(head *ListNode) bool {
@@ -31,27 +40,21 @@ func isPalindrome(head *ListNode) bool {
 		return true
 	}
 
-	// 取后半段节点
-	s, f := head, head
-	for f != nil && f.Next != nil && f.Next.Next != nil {
-		s = s.Next
-		f = f.Next.Next
-	}
-	n := s.Next
-
-	// 后半段节点反转
-	n = reverseNode(n)
-
-	// 判断是否回文
-	h1, h2 := head, n
-	for h1 != nil && h2 != nil {
-		if h1.Val != h2.Val {
+	// 判断是否是回文链表
+	// 快慢指针找到链表的中点
+	// - 奇数链表，当快指针 .Next == nil 时，慢指针正好走到中点，即 .Next = 另一半链表的头
+	//   1 -> 3 -> 5 -> 3 -> 1
+	// - 偶数链表，当快指针 .Next.Next =nil 时，慢指针正好走到一半的末尾，即 .Next = 另一半链表的头
+	//   1 -> 3 -> 5 -> 5 -> 3 -> 1
+	r := getRightHalfNode(head)
+	for r != nil {
+		if r.Val != head.Val {
 			return false
 		}
-		h1 = h1.Next
-		h2 = h2.Next
-	}
 
+		r = r.Next
+		head = head.Next
+	}
 	return true
 }
 

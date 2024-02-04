@@ -13,34 +13,37 @@ import (
 )
 
 // @lc code=begin
-
-func detectCycle(head *ListNode) (ans *ListNode) {
-	// 1. 找出相遇点
-	// 2. 此时再让快指针回到起点，速度和慢指针一致
-	// 3. 再次相遇即为相交起点
-
+func findCircleNode(head *ListNode) *ListNode {
 	s, f := head, head
-
-	for s != nil && f != nil && f.Next != nil {
+	for f.Next != nil && f.Next.Next != nil {
 		s = s.Next
 		f = f.Next.Next
 
 		if s == f {
-			break
+			return s
 		}
 	}
 
-	if s == nil || f == nil || f.Next == nil {
+	return nil
+}
+
+func detectCycle(head *ListNode) (ans *ListNode) {
+	if head == nil || head.Next == nil {
 		return
 	}
 
-	f = head
-	for s != f {
-		s = s.Next
-		f = f.Next
+	// 先用快慢指针判断是否有环
+	c := findCircleNode(head)
+	if c == nil {
+		return
 	}
 
-	ans = s
+	// 再来一个从 head 出发的指针，和相遇点一起往前走，相遇点就是环的起点
+	ans = head
+	for ans != c {
+		ans = ans.Next
+		c = c.Next
+	}
 
 	return
 }
