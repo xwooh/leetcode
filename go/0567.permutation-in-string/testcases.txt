@@ -1,0 +1,17 @@
+input:
+"ab"
+"eidbaooo"
+output:
+true
+
+input:
+"ab"
+"eidboaoo"
+output:
+false
+
+input:
+"ab"
+"a"
+output:
+false
