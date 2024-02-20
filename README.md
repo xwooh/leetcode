@@ -7,6 +7,7 @@
 - (Easy) [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
 - (Easy) [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
 - (Easy) [88. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/)
+- (Easy) [567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string/)
 
 ### 链表
 
@@ -48,6 +49,11 @@
 ### BFS
 
 - (Medium) [2059. 转化数字的最小运算数](https://leetcode.cn/problems/minimum-operations-to-convert-number/)
+
+### 回溯
+
+- (Medium) [77. 组合](https://leetcode.cn/problems/combinations/)
+- (Medium) [78. 子集](https://leetcode.cn/problems/subsets/)
 
 ### 动态规划
 
