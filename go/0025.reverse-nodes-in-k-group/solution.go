@@ -13,67 +13,51 @@ import (
 )
 
 // @lc code=begin
-
-func reverseKGroup(head *ListNode, k int) (ans *ListNode) {
-	if k == 1 {
-		ans = head
-		return
-	}
-
-	// 先计算下能跑几遍
-	tc := 0
-	for x := head; x != nil; x = x.Next {
-		tc++
-	}
-	ts := tc / k
-	if ts <= 0 {
-		ans = head
-		return
-	}
-
-	// 做 ts 遍
+func reverseNode(head *ListNode, k int) *ListNode {
+	// 从 head 开始翻转 k 个节点
 	dummy := &ListNode{Next: head}
 
-	// 哨兵节点
-	h := dummy
-	// 当前节点
-	p := dummy
+	return dummy.Next
+}
 
-	c := 0
-	rc := 0
-	for p.Next != nil {
-		if rc == 0 {
-			p = p.Next
-		} else {
-			// 需要把这个节点插入到头结点前面
-			tmp := p.Next
+func reverseKGroup(head *ListNode, k int) (ans *ListNode) {
+	dynamicDummy := &ListNode{Next: head}
+	dummy := dynamicDummy
 
-			p.Next = p.Next.Next
-			tmp.Next = h.Next
-			h.Next = tmp
-		}
+	// dummy 指向上一次的尾结点
+	// 先遍历一次，看看后面的节点数是否满足 k 个
+	// 如果满足 k 个再去翻转
 
-		// 做完一个节点，计数 +1
-		rc++
-
-		if rc == k {
-			// 重置 rc 计数
-			rc = 0
-			h = p
-
-			// 完整地做了一遍
+	p := head
+	for p != nil && p.Next != nil {
+		t := p
+		c := 0
+		for t != nil && c < k {
+			t = t.Next
 			c++
 		}
 
-		if c == ts {
-			// 后面的已经不够做一遍了，终止
+		if c < k {
+			// 后面节点不足，直接退出
 			break
 		}
 
+		// 后面节点足够，那就翻转
+		// 翻转 k - 1 次
+		for c > 1 {
+			tmp := p.Next
+			p.Next = p.Next.Next
+			tmp.Next = dynamicDummy.Next
+			dynamicDummy.Next = tmp
+			c--
+		}
+
+		// 翻转完成后 p 指向的是此次 k 个节点的尾结点
+		dynamicDummy = p
+		p = p.Next
 	}
 
 	ans = dummy.Next
-
 	return
 }
 
