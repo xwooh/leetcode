@@ -15,38 +15,34 @@ import (
 // @lc code=begin
 
 func reverseBetween(head *ListNode, left int, right int) (ans *ListNode) {
-	// 就一个节点，没法翻转
-	if left == right {
-		ans = head
-		return
+	p := 1
+	dummy := &ListNode{Next: head}
+
+	var x *ListNode
+	if p == left {
+		x = dummy
 	}
 
-	dummy := &ListNode{Next: head}
-	// 当前节点
-	h := dummy
-	// 「头」结点
-	p := dummy
-	c := 0
-	for c <= right && h.Next != nil {
-		if c+1 < left {
-			p = p.Next
+	for p < right && head != nil {
+		if p+1 == left {
+			x = head
 		}
 
-		if c < left {
-			h = h.Next
-		} else if c > left {
-			// 后面的节点都要移到 h 前面
-			tmp := h.Next
-
-			h.Next = h.Next.Next
-			tmp.Next = p.Next
-			p.Next = tmp
+		if p < left {
+			head = head.Next
+		} else {
+			// 反转链表套路
+			tmp := head.Next
+			head.Next = head.Next.Next
+			tmp.Next = x.Next
+			x.Next = tmp
 		}
-		c++
+
+		// 前进
+		p++
 	}
 
 	ans = dummy.Next
-
 	return
 }
 
