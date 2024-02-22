@@ -11,3 +11,10 @@ input:
 1
 output:
 [5]
+
+input:
+[3,5]
+1
+2
+output:
+[5,3]
