@@ -28,7 +28,7 @@ func fundS(nums []int) int {
 			// m 在断点左侧 => 右移
 			l = m + 1
 		} else if nums[m] > nums[r] {
-			return m
+			r = m
 		}
 	}
 
