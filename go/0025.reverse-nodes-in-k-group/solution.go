@@ -13,18 +13,11 @@ import (
 )
 
 // @lc code=begin
-func reverseNode(head *ListNode, k int) *ListNode {
-	// 从 head 开始翻转 k 个节点
-	dummy := &ListNode{Next: head}
-
-	return dummy.Next
-}
-
 func reverseKGroup(head *ListNode, k int) (ans *ListNode) {
 	dynamicDummy := &ListNode{Next: head}
 	dummy := dynamicDummy
 
-	// dummy 指向上一次的尾结点
+	// dynamicDummy 指向上一次的尾结点
 	// 先遍历一次，看看后面的节点数是否满足 k 个
 	// 如果满足 k 个再去翻转
 
