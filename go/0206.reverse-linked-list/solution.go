@@ -12,42 +12,29 @@ import (
 	. "github.com/j178/leetgo/testutils/go"
 )
 
-func insertHead(head *ListNode) (ans *ListNode) {
-	// 头插法
-	// 挨个把节点挪到头部
-
-	// 具体方式:
-	// 1. 从第二个节点开始，取出待插到头部的节点
-	// 2. 把上一个节点的指针指向下一个节点
-	// 3. 取出的节点的指针指向头结点
-
-	p := head
-	for p != nil && p.Next != nil {
-		tmp := p.Next        // 取出下一个节点
-		p.Next = p.Next.Next // 上一个节点指针指向下一个节点
-		tmp.Next = head      // 取出节点指向头结点
-		head = tmp           // 去除节点作为当前头结点
-	}
-
-	ans = head
-	return
-}
-
 // @lc code=begin
 func reverseList(head *ListNode) (ans *ListNode) {
-	p := head
-	for p != nil && p.Next != nil {
-		ans = p.Next
-		p.Next = p.Next.Next
-
-		// 插到头部
-		ans.Next = head
-
-		// 新的头部
-		head = ans
+	if head == nil || head.Next == nil {
+		ans = head
+		return
 	}
 
-	ans = head
+	dummy := &ListNode{Next: head}
+	p := head
+
+	for p.Next != nil {
+		// 取后一个数
+		tmp := p.Next
+
+		// p 指向 tmp 后面的节点
+		p.Next = p.Next.Next
+
+		// tm 插入到头结点前面
+		tmp.Next = dummy.Next
+		dummy.Next = tmp
+	}
+
+	ans = dummy.Next
 	return
 }
 
