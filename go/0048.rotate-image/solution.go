@@ -53,16 +53,9 @@ func rotateOne(matrix [][]int, i, j int) {
 
 func rotate(matrix [][]int) {
 	n := len(matrix)
-	b := n - 1
-	if n == 2 {
-		// 二维数组，至少要转一次
-		b = 1
-	} else if n%2 == 0 {
-		// 偶数，少转一层
-		b = b - 1
-	}
 
-	for i := 0; i < b; i++ {
+	// 2 * i < n 因为只要走一半路径，这样算就不用考虑奇偶了
+	for i := 0; 2*i < n; i++ {
 		for j := i; j < n-1-i; j++ {
 			rotateOne(matrix, i, j)
 		}
