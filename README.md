@@ -67,6 +67,7 @@
 ## 状态机dp
 
 - (Easy) [LCR 091. 粉刷房子](https://leetcode.cn/problems/JEj789/)
+- (Easy) [1262. 可被三整除的最大和](https://leetcode.cn/problems/greatest-sum-divisible-by-three/https://leetcode.cn/problems/greatest-sum-divisible-by-three/)
 
 ### 单调栈
 

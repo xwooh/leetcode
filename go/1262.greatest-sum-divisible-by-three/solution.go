@@ -21,45 +21,23 @@ func max(a, b int) int {
 }
 
 func maxSumDivThree(nums []int) (ans int) {
-	// 每次都用当前值去加上之前余为 0、1、2 的和
-	// 然后计算所得的和应该属于余为 0、1、2 的哪个，并保持当前对应余的和都是最大值
+	// m[i] 表示余为 0 1 2 时的最大元素和
 
-	var pre0, pre1, pre2 int
-	var m0, m1, m2 int
+	m := [3]int{}
 
-	l := len(nums)
-	for i := 0; i < l; i++ {
-		if (pre0+nums[i])%3 == 0 {
-			m0 = max(m0, pre0+nums[i])
-		} else if (pre1+nums[i])%3 == 0 {
-			m0 = max(m0, pre1+nums[i])
-		} else if (pre2+nums[i])%3 == 0 {
-			m0 = max(m0, pre2+nums[i])
-		}
+	for i := 0; i < len(nums); i++ {
+		// 之前余为 0 1 2 的三种情况，加上当前元素 nums[i] 后和的三种情况
+		s0 := m[0] + nums[i]
+		s1 := m[1] + nums[i]
+		s2 := m[2] + nums[i]
 
-		if (pre0+nums[i])%3 == 1 {
-			m1 = max(m1, pre0+nums[i])
-		} else if (pre1+nums[i])%3 == 1 {
-			m1 = max(m1, pre1+nums[i])
-		} else if (pre2+nums[i])%3 == 1 {
-			m1 = max(m1, pre2+nums[i])
-		}
-
-		if (pre0+nums[i])%3 == 2 {
-			m2 = max(m2, pre0+nums[i])
-		} else if (pre1+nums[i])%3 == 2 {
-			m2 = max(m2, pre1+nums[i])
-		} else if (pre2+nums[i])%3 == 2 {
-			m2 = max(m2, pre2+nums[i])
-		}
-
-		pre0 = m0
-		pre1 = m1
-		pre2 = m2
-
+		// 三种加上后和的三种余数情况
+		m[s0%3] = max(m[s0%3], s0) // s0 = m[0] + nums[i]，所以 s0 的余数和 nums[i] 的余数一样
+		m[s1%3] = max(m[s1%3], s1)
+		m[s2%3] = max(m[s2%3], s2)
 	}
 
-	ans = pre0
+	ans = m[0]
 
 	return
 }
