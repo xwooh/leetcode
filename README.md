@@ -64,6 +64,10 @@
 - (Medium) [55. 跳跃游戏](https://leetcode.cn/problems/jump-game/)
 - (Medium) [45. 跳跃游戏 II](https://leetcode.cn/problems/jump-game-ii/)
 
+## 状态机dp
+
+- (Easy) [LCR 091. 粉刷房子](https://leetcode.cn/problems/JEj789/)
+
 ### 单调栈
 
 - (Medium) [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
