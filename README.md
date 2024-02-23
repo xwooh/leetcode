@@ -69,6 +69,10 @@
 - (Easy) [LCR 091. 粉刷房子](https://leetcode.cn/problems/JEj789/)
 - (Easy) [1262. 可被三整除的最大和](https://leetcode.cn/problems/greatest-sum-divisible-by-three/https://leetcode.cn/problems/greatest-sum-divisible-by-three/)
 
+## 背包问题
+
+- (Easy) [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)
+
 ### 单调栈
 
 - (Medium) [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
