@@ -32,7 +32,8 @@ func maxSumDivThree(nums []int) (ans int) {
 		s2 := m[2] + nums[i]
 
 		// 三种加上后和的三种余数情况
-		m[s0%3] = max(m[s0%3], s0) // s0 = m[0] + nums[i]，所以 s0 的余数和 nums[i] 的余数一样
+		// s0 s1 s2 模上 3 之后的余数肯定还是 0 1 2，所以 +nums[i] 后的三种情况就是下面这三种
+		m[s0%3] = max(m[s0%3], s0)
 		m[s1%3] = max(m[s1%3], s1)
 		m[s2%3] = max(m[s2%3], s2)
 	}
