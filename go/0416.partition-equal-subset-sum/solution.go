@@ -30,17 +30,8 @@ func bagCount(nums []int, v int) bool {
 	f := make([]bool, v+1)
 	f[0] = true // 要凑空间为 0 的背包，肯定是可以的
 	for _, n := range nums {
-		for j := v; j >= 0; j-- {
-			ni := f[j]
-
-			var i bool
-			if j >= n {
-				i = f[j-n]
-			} else {
-				i = false
-			}
-
-			f[j] = ni || i
+		for j := v; j >= n; j-- {
+			f[j] = f[j] || f[j-n]
 		}
 	}
 

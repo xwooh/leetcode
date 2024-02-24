@@ -71,9 +71,9 @@
 
 ## 背包问题
 
-- (Easy) [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)
-- (Easy) [518. 零钱兑换 II](https://leetcode.cn/problems/coin-change-ii/)
-- (Medium) [494. 目标和](https://leetcode.cn/problems/target-sum/)
+- (Easy) [416. 分割等和子集（01背包）](https://leetcode.cn/problems/partition-equal-subset-sum/)
+- (Easy) [518. 零钱兑换 II（完全背包）](https://leetcode.cn/problems/coin-change-ii/)
+- (Medium) [494. 目标和（01背包）](https://leetcode.cn/problems/target-sum/)
 
 ### 单调栈
 
