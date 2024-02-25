@@ -13,58 +13,88 @@ import (
 )
 
 // @lc code=begin
+func quickSearch(nums []int, target int) int {
+	for idx, n := range nums {
+		if n == target {
+			return idx
+		}
+	}
+	return -1
+}
 
-func search(nums []int, target int) (ans int) {
-	// 先找断点 k
+func findStart(nums []int) int {
+	// 找到断点
 	l, r := 0, len(nums)-1
-
-	for l < r && nums[l] > nums[r] {
-		m := (l + r) / 2
-
-		// 等号确保 l、m 重合时 l 右移
-		if nums[l] <= nums[m] {
-			// 在右侧
-			l = m + 1
-		} else {
-			// 在左侧
-			r = m
-		}
-	}
-
-	// 再找 target
-	var lx, rx int
-	if l == 0 {
-		// 递增序列
-		lx, rx = 0, len(nums)-1
-	} else {
-		// 根据断点判断 target 在左侧还是右侧
-		if nums[0] <= target && target <= nums[l-1] {
-			// target 在左侧
-			lx, rx = 0, l-1
-		} else {
-			lx, rx = l, len(nums)-1
-		}
-	}
-
-	for lx < rx {
-		mx := (lx + rx) / 2
-
-		if target == nums[mx] {
-			return mx
-		} else if target > nums[mx] {
-			// 右移
-			lx = mx + 1
-		} else {
+	for l < r {
+		m := l + (r-l)/2
+		if nums[m] <= nums[len(nums)-1] {
 			// 左移
-			rx = mx - 1
+			r = m
+		} else if nums[m] > nums[len(nums)-1] {
+			// 右移
+			l = m + 1
 		}
 	}
 
-	if nums[lx] == target {
-		return lx
+	if l == 0 {
+		return l
+	}
+
+	if nums[l-1] > nums[l] {
+		return l
 	}
 
 	return -1
+}
+
+func bs(nums []int, target int) int {
+	l, r := 0, len(nums)-1
+
+	for l < r {
+		m := l + (r-l)/2
+		if nums[m] == target {
+			return m
+		} else if nums[m] > target {
+			// 左侧
+			r = m - 1
+		} else {
+			// 右侧
+			l = m + 1
+		}
+	}
+
+	if nums[l] == target {
+		return l
+	}
+
+	return -1
+}
+
+func search(nums []int, target int) (ans int) {
+	if len(nums) <= 100 {
+		return quickSearch(nums, target)
+	}
+
+	// 找到断点处
+	s := findStart(nums)
+
+	// 判断 target 在断点的左侧还是右侧
+	if nums[s] == target {
+		return s
+	} else if nums[s] > target {
+		// 最小值都比 target 大，那就不存在 target
+		return -1
+	} else if nums[len(nums)-1] < target {
+		// 在左侧
+		return bs(nums[:s], target)
+	} else {
+		// 在右侧
+		r := bs(nums[s:], target)
+		if r == -1 {
+			return -1
+		}
+		return s + r
+	}
 }
 
 // @lc code=end
