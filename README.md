@@ -50,6 +50,7 @@
 ### BFS
 
 - (Medium) [2059. 转化数字的最小运算数](https://leetcode.cn/problems/minimum-operations-to-convert-number/)
+- (Easy) [994. 腐烂的橘子](https://leetcode.cn/problems/rotting-oranges/)
 
 ### 回溯
 
