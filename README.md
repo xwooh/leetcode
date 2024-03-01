@@ -86,6 +86,11 @@
 - (Hard) [239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/)
 
 
+### 最长上升子序列
+
+- (Medium) [354. 俄罗斯套娃信封问题](https://leetcode.cn/problems/russian-doll-envelopes/)
+
+
 ## usage
 assist by [cli](https://github.com/j178/leetgo).
 
